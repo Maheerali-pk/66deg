@@ -45,21 +45,20 @@ const WhatWeDo = () => {
     <section className="py-24 bg-background">
       <div className="max-w-container mx-auto px-6">
         <div className="mb-16">
-          <p className="text-muted-foreground uppercase tracking-widest text-sm mb-4">
+          <p className="uppercase text-black tracking-widest text-sm mb-4 font-family-secondary">
             WHAT WE DO
           </p>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl text-foreground max-w-3xl leading-relaxed">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl text-foreground max-w-3xl ">
               We help companies navigate through the complexities of AI,
               transforming data into intelligent solutions that empower the
               modern workforce across industries.
             </h2>
             <Button
-              variant="outline"
-              className="rounded-full self-start lg:self-end whitespace-nowrap"
+              variant="secondary"
+              className="self-start lg:self-end whitespace-nowrap rounded-micro bg-btn-bg !font-family-secondary"
             >
               LEARN ABOUT OUR APPROACH
-              <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </div>
         </div>
@@ -68,19 +67,22 @@ const WhatWeDo = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="group bg-card border border-border/50 rounded-2xl p-6 hover:border-primary/50 transition-all duration-300 hover-lift"
+              className="group cursor-pointer bg-white border border-navbar-border  p-6 hover:border-black/40 transition-all duration-300 relative"
             >
-              <p className="text-muted-foreground text-xs uppercase tracking-wider mb-4">
-                Service
-              </p>
-              <div className="w-12 h-12 mb-4">
-                <img
-                  src={service.icon}
-                  alt={service.title}
-                  className="w-full h-full object-contain"
-                />
+              <div className="flex items-start justify-between mb-4">
+                <span className="inline-block bg-muted text-muted-foreground text-xs uppercase tracking-wider px-2 py-1 rounded">
+                  Service
+                </span>
+                <div className="w-12 h-12 flex-shrink-0">
+                  <img
+                    src={service.icon}
+                    alt={service.title}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
               </div>
-              <h3 className="text-foreground text-xl font-medium mb-3">
+              <div className="border-t border-navbar-border mb-4"></div>
+              <h3 className="text-foreground text-xl font-semibold mb-3">
                 {service.title}
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed">

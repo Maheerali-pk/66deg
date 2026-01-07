@@ -137,7 +137,7 @@ const Header = () => {
           <Link
             href="/"
             className={classNames(
-              "font-bold text-3xl tracking-tight transition-colors duration-300",
+              "font-bold text-3xl tracking-tight transition-colors duration-300 font-family-secondary",
               {
                 "text-text-primary":
                   isAnyDropdownOpen || (isVisible && isPastHero),

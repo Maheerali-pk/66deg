@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
 /* Import Saans Trial Font Family */
@@ -61,6 +62,7 @@
 @theme {
   /* Font Family */
   --font-family-sans: "Saans Trial", sans-serif;
+  --font-family-secondary: "Fira Code", monospace;
 
   /* Colors */
   --color-background: var(--background);
@@ -97,8 +99,12 @@
   --color-gray-500: var(--gray-500);
 
   --color-navbar-border: var(--navbar-border);
+  --color-impact-dark: var(--impact-dark);
+  --color-impact-light: var(--impact-light);
   /* Border Radius */
   --radius: var(--radius);
+  --radius-micro: 0.125rem;
+  --color-btn-bg: var(--btn-bg);
   --max-width-container: 96rem;
 }
 
@@ -116,6 +122,7 @@
 
   --primary: rgb(11, 102, 255);
   --primary-foreground: rgb(255, 255, 255);
+  --btn-bg: #e1e6f1;
 
   --secondary: rgb(244, 245, 247);
   --secondary-foreground: rgb(19, 23, 31);
@@ -179,7 +186,11 @@
   --sidebar-border: rgb(229, 231, 235);
   --sidebar-ring: rgb(11, 102, 255);
 
-  --navbar-border: #b3c5d0;
+  --navbar-border: rgb(179, 197, 208);
+
+  /* Business Impact card colors */
+  --impact-dark: rgb(3, 10, 28);
+  --impact-light: rgb(179, 197, 208);
   --gray-500: rgba(179, 197, 208);
 }
 
@@ -257,6 +268,11 @@ body {
 .hover-lift:hover {
   transform: translateY(-4px);
 }
+
+.rounded-micro {
+  border-radius: 0.125rem;
+}
+
 h1 {
   font-size: 5.75rem;
   /* line-height: 1 !important; */
