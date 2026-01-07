@@ -1,0 +1,261 @@
+@import "tailwindcss";
+
+/* Import Saans Trial Font Family */
+@font-face {
+  font-family: "Saans Trial";
+  src: url("/fonts/saans-trial/Saans-TRIAL-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Saans Trial";
+  src: url("/fonts/saans-trial/Saans-TRIAL-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Saans Trial";
+  src: url("/fonts/saans-trial/Saans-TRIAL-RegularItalic.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Saans Trial";
+  src: url("/fonts/saans-trial/Saans-TRIAL-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Saans Trial";
+  src: url("/fonts/saans-trial/Saans-TRIAL-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Saans Trial";
+  src: url("/fonts/saans-trial/Saans-TRIAL-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Saans Trial";
+  src: url("/fonts/saans-trial/Saans-TRIAL-Heavy.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* Font Family */
+  --font-family-sans: "Saans Trial", sans-serif;
+
+  /* Colors */
+  --color-background: var(--background);
+  --color-latest-news: var(--latest-news);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Custom 66degrees colors */
+  --color-navy-dark: var(--navy-dark);
+  --color-navy: var(--navy);
+  --color-navy-light: var(--navy-light);
+  --color-blue-accent: var(--blue-accent);
+  --color-blue-glow: var(--blue-glow);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-gray-light: var(--gray-light);
+
+  --color-navbar-border: var(--navbar-border);
+  /* Border Radius */
+  --radius: var(--radius);
+  --max-width-container: 96rem;
+}
+
+:root {
+  --background: rgb(255, 255, 255);
+  --foreground: rgb(3, 10, 28);
+  --latest-news: #fffdf921;
+  --gray-light: rgb(237, 237, 237);
+
+  --card: rgb(255, 255, 255);
+  --card-foreground: rgb(19, 23, 31);
+
+  --popover: rgb(255, 255, 255);
+  --popover-foreground: rgb(19, 23, 31);
+
+  --primary: rgb(11, 102, 255);
+  --primary-foreground: rgb(255, 255, 255);
+
+  --secondary: rgb(244, 245, 247);
+  --secondary-foreground: rgb(19, 23, 31);
+
+  --muted: rgb(244, 245, 247);
+  --muted-foreground: rgb(102, 103, 112);
+
+  --accent: rgb(11, 102, 255);
+  --accent-foreground: rgb(255, 255, 255);
+
+  --destructive: rgb(239, 68, 68);
+  --destructive-foreground: rgb(249, 250, 251);
+
+  --border: rgb(229, 231, 235);
+  --input: rgb(229, 231, 235);
+  --ring: rgb(11, 102, 255);
+
+  --radius: 0.5rem;
+
+  /* Custom 66degrees colors */
+  --navy-dark: rgb(12, 14, 18);
+  --navy: rgb(16, 19, 24);
+  --navy-light: rgb(24, 28, 35);
+  --blue-accent: rgb(11, 102, 255);
+  --blue-glow: rgb(51, 122, 255);
+  --text-primary: rgb(3, 10, 28);
+  --text-secondary: rgb(102, 103, 112);
+  --text-muted: rgb(130, 131, 140);
+
+  /* Section backgrounds */
+  --section-light: rgb(247, 248, 249);
+  --section-dark: rgb(16, 19, 24);
+
+  /* Gradients */
+  --gradient-hero: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgb(255, 255, 255) 100%
+  );
+  --gradient-card: linear-gradient(
+    180deg,
+    rgb(247, 248, 249) 0%,
+    rgb(255, 255, 255) 100%
+  );
+  --gradient-glow: radial-gradient(
+    ellipse at center,
+    rgba(11, 102, 255, 0.1) 0%,
+    transparent 70%
+  );
+
+  /* Shadows */
+  --shadow-card: 0 4px 24px -8px rgba(19, 23, 31, 0.1);
+  --shadow-button: 0 4px 16px rgba(11, 102, 255, 0.3);
+
+  --sidebar-background: rgb(255, 255, 255);
+  --sidebar-foreground: rgb(19, 23, 31);
+  --sidebar-primary: rgb(11, 102, 255);
+  --sidebar-primary-foreground: rgb(255, 255, 255);
+  --sidebar-accent: rgb(244, 245, 247);
+  --sidebar-accent-foreground: rgb(19, 23, 31);
+  --sidebar-border: rgb(229, 231, 235);
+  --sidebar-ring: rgb(11, 102, 255);
+
+  --navbar-border: #b3c5d0;
+}
+
+html {
+  scroll-behavior: black;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: "Saans Trial", sans-serif;
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+}
+
+/* Custom Utilities */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(
+    135deg,
+    var(--foreground) 0%,
+    var(--muted-foreground) 100%
+  );
+}
+
+.glass-effect {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  background-color: color-mix(in srgb, var(--background) 80%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
+}
+
+.glow-effect {
+  box-shadow: 0 0 40px color-mix(in srgb, var(--blue-accent) 30%, transparent);
+}
+
+.marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hover-lift {
+  transition: transform 300ms;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+h1 {
+  font-size: 5.75rem;
+  /* line-height: 1 !important; */
+}
