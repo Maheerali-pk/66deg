@@ -3,7 +3,7 @@
 import Link from "next/link";
 import NavbarButton from "@/components/NavbarButton";
 import NavDropdown, { type DropdownGroup } from "@/components/NavDropdown";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import classNames from "classnames";
 
 interface NavItem {
@@ -17,6 +17,9 @@ interface NavItem {
 const Header = () => {
   const [isAnyDropdownOpen, setIsAnyDropdownOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isPastHero, setIsPastHero] = useState(false);
   const navItems: NavItem[] = [
     {
       label: "Solutions",
@@ -77,17 +80,58 @@ const Header = () => {
     setActiveDropdown(isOpen ? label : null);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const heroHeight = window.innerHeight; // Hero section is min-h-screen
+
+      // Check if we've scrolled past the hero section
+      setIsPastHero(currentScrollY > heroHeight * 0.8);
+
+      // Show header when at top of page
+      if (currentScrollY < 10) {
+        setIsVisible(true);
+      } else {
+        // Hide when scrolling down, show when scrolling up
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          setIsVisible(false);
+        } else if (currentScrollY < lastScrollY) {
+          setIsVisible(true);
+        }
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-7">
+    <header
+      className={classNames(
+        "fixed top-0 left-0 right-0 z-50 px-4 pt-7 transition-transform duration-300 ease-in-out",
+        {
+          "-translate-y-full": !isVisible,
+          "translate-y-0": isVisible,
+        }
+      )}
+    >
       <nav
         className={classNames(
-          "max-w-container mx-auto backdrop-blur-xl shadow-sm rounded px-6 h-16 flex items-center justify-between transition-all duration-300",
+          " max-w-container mx-auto border border-gray-500/50 backdrop-blur-2xl shadow-sm rounded px-6 h-16 flex items-center justify-between transition-all duration-300",
           {
-            "bg-white border-white/20": isAnyDropdownOpen,
-            "bg-white/10 border-white/10": !isAnyDropdownOpen,
+            "bg-white ": isAnyDropdownOpen || (isVisible && isPastHero),
+            "bg-white/10 ": !isAnyDropdownOpen && !(isVisible && isPastHero),
           }
         )}
-        style={{ borderRadius: "0.25rem" }}
+        style={{
+          borderRadius: "0.25rem",
+          boxShadow: "0px 0px 4px rgba(3, 10, 28, 0.05)",
+        }}
       >
         <div className="flex items-center">
           <Link
@@ -95,8 +139,9 @@ const Header = () => {
             className={classNames(
               "font-bold text-3xl tracking-tight transition-colors duration-300",
               {
-                "text-text-primary": isAnyDropdownOpen,
-                "text-white": !isAnyDropdownOpen,
+                "text-text-primary":
+                  isAnyDropdownOpen || (isVisible && isPastHero),
+                "text-white": !isAnyDropdownOpen && !(isVisible && isPastHero),
               }
             )}
           >
@@ -115,7 +160,7 @@ const Header = () => {
                   onOpenChange={(isOpen) =>
                     handleDropdownOpenChange(item.label, isOpen)
                   }
-                  isDarkMode={!isAnyDropdownOpen}
+                  isDarkMode={!(isAnyDropdownOpen || (isVisible && isPastHero))}
                   isActive={activeDropdown === item.label}
                 />
               ) : (
@@ -125,8 +170,9 @@ const Header = () => {
                       "flex items-center gap-2 cursor-pointer px-7 py-0 text-lg transition-colors duration-300 h-full",
                       {
                         "text-text-primary/80 hover:text-text-primary":
-                          isAnyDropdownOpen,
-                        "text-white/80 hover:text-white": !isAnyDropdownOpen,
+                          isAnyDropdownOpen || (isVisible && isPastHero),
+                        "text-white/80 hover:text-white":
+                          !isAnyDropdownOpen && !(isVisible && isPastHero),
                       }
                     )}
                   >
@@ -142,7 +188,7 @@ const Header = () => {
           className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_4px_16px_hsl(217,91%,60%,0.3)] font-semibold tracking-wide uppercase text-xs h-12 px-6 py-3"
           style={{ borderRadius: "0.125rem" }}
         >
-          GET IN TOUCH
+          CONTACT US
         </NavbarButton>
       </nav>
     </header>

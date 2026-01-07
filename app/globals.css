@@ -94,6 +94,7 @@
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
   --color-gray-light: var(--gray-light);
+  --color-gray-500: var(--gray-500);
 
   --color-navbar-border: var(--navbar-border);
   /* Border Radius */
@@ -179,6 +180,7 @@
   --sidebar-ring: rgb(11, 102, 255);
 
   --navbar-border: #b3c5d0;
+  --gray-500: rgba(179, 197, 208);
 }
 
 html {
