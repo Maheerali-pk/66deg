@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import classNames from "classnames";
 
 const ExpertiseTabs = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const [isContentVisible, setIsContentVisible] = useState(true);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const [tabWidths, setTabWidths] = useState<number[]>([]);
 
   const tabs = [
     {
@@ -56,70 +58,139 @@ const ExpertiseTabs = () => {
     },
   ];
 
+  useEffect(() => {
+    const updateTabWidths = () => {
+      const widths = tabRefs.current.map((ref) => {
+        return ref ? ref.offsetWidth : 0;
+      });
+      setTabWidths(widths);
+    };
+
+    // Small delay to ensure DOM is ready
+    const timeoutId = setTimeout(updateTabWidths, 0);
+    window.addEventListener("resize", updateTabWidths);
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener("resize", updateTabWidths);
+    };
+  }, [activeTab]);
+
   return (
     <section className="py-24 bg-background">
-      <div className="max-w-container mx-auto px-6">
-        <div className="mb-12">
+      <div className="max-w-container mx-auto ">
+        <div className="mb-12 w-full">
           <p className="text-muted-foreground uppercase tracking-widest text-sm mb-4">
             OUR EXPERTISE
           </p>
-          <h2 className="text-3xl md:text-4xl text-foreground mb-4">
-            Guiding Your Path to AI Value
-          </h2>
-          <p className="text-muted-foreground max-w-2xl">
-            Our expertise and end-to-end capabilities form the strategic
-            architecture of the Agentic Enterprise, guiding your path to AI
-            value.
-          </p>
+          <div className="flex justify-between w-full">
+            <h2 className="text-6xl  text-foreground mb-4">
+              Guiding Your Path to AI Value
+            </h2>
+            <p className="text-muted-foreground max-w-lg text-lg">
+              Our expertise and end-to-end capabilities form the strategic
+              architecture of the Agentic Enterprise, guiding your path to AI
+              value.
+            </p>
+          </div>
         </div>
+      </div>
 
-        {/* Tabs */}
-        <div className="flex flex-wrap gap-2 mb-12">
-          {tabs.map((tab, index) => (
-            <button
-              key={index}
-              onClick={() => setActiveTab(index)}
-              className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeTab === index
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
+      {/* Tabs - Full Width */}
+      <div className="flex flex-col gap-20">
+        <div className="w-full">
+          <div className="max-w-container mx-auto ">
+            <div className="flex gap-4 relative">
+              {tabs.map((tab, index) => (
+                <button
+                  key={index}
+                  ref={(el) => {
+                    tabRefs.current[index] = el;
+                  }}
+                  onClick={() => {
+                    if (index !== activeTab) {
+                      setIsContentVisible(false);
+                      setTimeout(() => {
+                        setActiveTab(index);
+                        setTimeout(() => setIsContentVisible(true), 50);
+                      }, 250);
+                    }
+                  }}
+                  className={classNames(
+                    "flex-1 uppercase text-lg cursor-pointer text-text-primary transition-colors duration-300 pb-3 border-b border-divider-1 -mb-[2px] relative z-0",
+                    {
+                      "hover:text-foreground": activeTab !== index,
+                    }
+                  )}
+                >
+                  {tab.label.toUpperCase()}
+                </button>
+              ))}
+              {/* All indicator lines - each tab has its own line, all stacked at same vertical position */}
+              {tabs.map((tab, index) => {
+                const tabWidth = tabWidths[index] || 0;
+                const tabLeft = tabRefs.current[index]
+                  ? tabRefs.current[index]!.offsetLeft
+                  : 0;
+                const isActive = activeTab === index;
+                return (
+                  <div
+                    key={`indicator-${index}`}
+                    className="absolute bottom-[-2px] h-px bg-primary transition-all duration-500 ease-in-out z-10"
+                    style={{
+                      left: `${tabLeft}px`,
+                      width: isActive ? `${tabWidth}px` : "0px",
+                    }}
+                  />
+                );
+              })}
+            </div>
+          </div>
         </div>
 
         {/* Tab Content */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <h3 className="text-xl md:text-2xl text-foreground leading-relaxed">
-              {tabs[activeTab].title}
-            </h3>
-            <p className="text-muted-foreground leading-relaxed">
-              {tabs[activeTab].description}
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {tabs[activeTab].tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className="px-3 py-1 bg-secondary rounded-full text-xs text-secondary-foreground"
-                >
-                  {tag}
-                </span>
-              ))}
+        <div className="max-w-container mx-auto  ">
+          <div
+            className={classNames(
+              "grid lg:grid-cols-[1fr_1.5fr] gap-60 items-start transition-all duration-300 ease-in-out",
+              {
+                "opacity-0 translate-y-2": !isContentVisible,
+                "opacity-100 translate-y-0": isContentVisible,
+              }
+            )}
+          >
+            <div className="space-y-6">
+              <h3 className="text-xl md:text-2xl text-foreground leading-relaxed">
+                {tabs[activeTab].title}
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                {tabs[activeTab].description}
+              </p>
+              <div className="space-y-0 w-1/2">
+                {tabs[activeTab].tags.map((tag, index) => (
+                  <div
+                    key={index}
+                    className="border-b border-divider-1 py-3 first:border-t-0"
+                  >
+                    <span className="uppercase text-sm text-foreground">
+                      {tag.toUpperCase()}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <a
+                href="#"
+                className="inline-flex items-center text-sm font-medium text-foreground hover:text-primary transition-colors"
+              >
+                LEARN MORE →
+              </a>
             </div>
-            <Button variant="outline" className="rounded-full">
-              Learn more
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-          </div>
-          <div className="rounded-2xl overflow-hidden">
-            <img
-              src={tabs[activeTab].image}
-              alt={tabs[activeTab].title}
-              className="w-full h-auto object-cover transition-opacity duration-500"
-            />
+            <div className="bg-background-secondary flex items-center justify-center rounded-sm overflow-hidden  h-full w-auto p-0">
+              <img
+                src={tabs[activeTab].image}
+                alt={tabs[activeTab].title}
+                className="h-96 w-auto object-cover rounded-sm"
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -65,6 +65,7 @@
   --font-family-secondary: "Fira Code", monospace;
 
   /* Colors */
+  --color-divider-1: var(--divider-1);
   --color-background: var(--background);
   --color-latest-news: var(--latest-news);
   --color-foreground: var(--foreground);
@@ -101,6 +102,7 @@
   --color-navbar-border: var(--navbar-border);
   --color-impact-dark: var(--impact-dark);
   --color-impact-light: var(--impact-light);
+  --color-background-secondary: var(--background-secondary);
   /* Border Radius */
   --radius: var(--radius);
   --radius-micro: 0.125rem;
@@ -109,64 +111,57 @@
 }
 
 :root {
-  --background: rgb(255, 255, 255);
-  --foreground: rgb(3, 10, 28);
+  --background: #ffffff;
+  --background-secondary: #eee;
+  --foreground: #030a1c;
   --latest-news: #fffdf921;
-  --gray-light: rgb(237, 237, 237);
+  --gray-light: #ededed;
 
-  --card: rgb(255, 255, 255);
-  --card-foreground: rgb(19, 23, 31);
+  --card: #ffffff;
+  --card-foreground: #13171f;
 
-  --popover: rgb(255, 255, 255);
-  --popover-foreground: rgb(19, 23, 31);
+  --popover: #ffffff;
+  --popover-foreground: #13171f;
 
-  --primary: rgb(11, 102, 255);
-  --primary-foreground: rgb(255, 255, 255);
+  --primary: #0b66ff;
+  --primary-foreground: #ffffff;
   --btn-bg: #e1e6f1;
 
-  --secondary: rgb(244, 245, 247);
-  --secondary-foreground: rgb(19, 23, 31);
+  --secondary: #f4f5f7;
+  --secondary-foreground: #13171f;
 
-  --muted: rgb(244, 245, 247);
-  --muted-foreground: rgb(102, 103, 112);
+  --muted: #f4f5f7;
+  --muted-foreground: #666770;
 
-  --accent: rgb(11, 102, 255);
-  --accent-foreground: rgb(255, 255, 255);
+  --accent: #0b66ff;
+  --accent-foreground: #ffffff;
 
-  --destructive: rgb(239, 68, 68);
-  --destructive-foreground: rgb(249, 250, 251);
+  --destructive: #ef4444;
+  --destructive-foreground: #f9fafb;
 
-  --border: rgb(229, 231, 235);
-  --input: rgb(229, 231, 235);
-  --ring: rgb(11, 102, 255);
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #0b66ff;
 
   --radius: 0.5rem;
 
   /* Custom 66degrees colors */
-  --navy-dark: rgb(12, 14, 18);
-  --navy: rgb(16, 19, 24);
-  --navy-light: rgb(24, 28, 35);
-  --blue-accent: rgb(11, 102, 255);
-  --blue-glow: rgb(51, 122, 255);
-  --text-primary: rgb(3, 10, 28);
-  --text-secondary: rgb(102, 103, 112);
-  --text-muted: rgb(130, 131, 140);
+  --navy-dark: #0c0e12;
+  --navy: #101318;
+  --navy-light: #181c23;
+  --blue-accent: #0b66ff;
+  --blue-glow: #337aff;
+  --text-primary: #030a1c;
+  --text-secondary: #666770;
+  --text-muted: #82838c;
 
   /* Section backgrounds */
-  --section-light: rgb(247, 248, 249);
-  --section-dark: rgb(16, 19, 24);
+  --section-light: #f7f8f9;
+  --section-dark: #101318;
 
   /* Gradients */
-  --gradient-hero: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgb(255, 255, 255) 100%
-  );
-  --gradient-card: linear-gradient(
-    180deg,
-    rgb(247, 248, 249) 0%,
-    rgb(255, 255, 255) 100%
-  );
+  --gradient-hero: linear-gradient(180deg, transparent 0%, #ffffff 100%);
+  --gradient-card: linear-gradient(180deg, #f7f8f9 0%, #ffffff 100%);
   --gradient-glow: radial-gradient(
     ellipse at center,
     rgba(11, 102, 255, 0.1) 0%,
@@ -177,21 +172,21 @@
   --shadow-card: 0 4px 24px -8px rgba(19, 23, 31, 0.1);
   --shadow-button: 0 4px 16px rgba(11, 102, 255, 0.3);
 
-  --sidebar-background: rgb(255, 255, 255);
-  --sidebar-foreground: rgb(19, 23, 31);
-  --sidebar-primary: rgb(11, 102, 255);
-  --sidebar-primary-foreground: rgb(255, 255, 255);
-  --sidebar-accent: rgb(244, 245, 247);
-  --sidebar-accent-foreground: rgb(19, 23, 31);
-  --sidebar-border: rgb(229, 231, 235);
-  --sidebar-ring: rgb(11, 102, 255);
+  --sidebar-background: #ffffff;
+  --sidebar-foreground: #13171f;
+  --sidebar-primary: #0b66ff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f4f5f7;
+  --sidebar-accent-foreground: #13171f;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: #0b66ff;
 
-  --navbar-border: rgb(179, 197, 208);
+  --navbar-border: #b3c5d0;
 
   /* Business Impact card colors */
-  --impact-dark: rgb(3, 10, 28);
-  --impact-light: rgb(179, 197, 208);
-  --gray-500: rgba(179, 197, 208);
+  --impact-dark: #030a1c;
+  --impact-light: #b3c5d0;
+  --divider-1: #221e1e4d;
 }
 
 html {
