@@ -122,7 +122,7 @@ const Header = () => {
     >
       <nav
         className={classNames(
-          " max-w-container mx-auto border border-gray-500/50 backdrop-blur-2xl shadow-sm rounded px-6 h-16 flex items-center justify-between transition-all duration-300",
+          " max-w-container mx-auto border border-navbar-border/50 backdrop-blur-2xl shadow-sm rounded px-6 h-16 flex items-center justify-between transition-all duration-300",
           {
             "bg-white ": isAnyDropdownOpen || (isVisible && isPastHero),
             "bg-white/10 ": !isAnyDropdownOpen && !(isVisible && isPastHero),
