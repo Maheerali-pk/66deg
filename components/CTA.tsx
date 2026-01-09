@@ -26,62 +26,29 @@ const CTA = () => {
   };
 
   return (
-    <section className="py-32 bg-background relative overflow-hidden">
-      {/* Background graphic */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-10">
-        <img
-          src="https://cdn.prod.website-files.com/68dd5adbcc75b2bc818c9064/68dd5adbcc75b2bc818c9185_a525b8042b9f67e3828e1be0f2e11b48_graphic.svg"
-          alt=""
-          className="w-full max-w-4xl"
-        />
-      </div>
+    <section className="max-w-container mx-auto px-20 relative z-10 bg-navbar-border py-32 mt-40 mb-20">
+      <div className="flex justify-between gap-12 items-center">
+        {/* Left side - Title */}
+        <div>
+          <h2 className="text-6xl text-foreground  leading-tight">
+            Start Accelerating your
+            <br />
+            Path to AI Value
+          </h2>
+        </div>
 
-      <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-        <h2 className="text-4xl md:text-5xl text-foreground mb-6">
-          Start Accelerating your Path to AI Value
-        </h2>
-        <p className="text-muted-foreground text-lg mb-10 max-w-2xl mx-auto">
-          Get in touch today and start defining your path towards building the Agentic Enterprise.
-        </p>
-        <Button variant="cta" size="cta" className="rounded-full mb-16">
-          Get in touch
-          <ArrowRight className="w-4 h-4 ml-2" />
-        </Button>
-
-        {/* Newsletter Subscription */}
-        <div className="mt-16 pt-16 border-t border-border/50">
-          <h3 className="text-2xl md:text-3xl text-foreground mb-3">
-            Subscribe to our newsletter
-          </h3>
-          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-            Stay informed of our latest news, insights, and events
+        {/* Right side - Description and Button */}
+        <div className="flex flex-col gap-6 max-w-lg">
+          <p className="text-foreground text-lg leading-relaxed">
+            Get in touch today and start defining your path towards building the
+            Agentic Enterprise.
           </p>
-          <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Input
-                type="email"
-                placeholder="Your email address"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                  setError("");
-                }}
-                className="flex-1"
-                required
-              />
-              <Button type="submit" variant="cta" size="cta" className="rounded-full whitespace-nowrap">
-                Subscribe
-              </Button>
-            </div>
-            {error && (
-              <p className="text-destructive text-sm mt-2 text-left">{error}</p>
-            )}
-            {submitted && (
-              <p className="text-primary text-sm mt-2">
-                Thank you! Your submission has been received!
-              </p>
-            )}
-          </form>
+          <Button
+            variant="secondary"
+            className="bg-primary text-white font-family-secondary hover:bg-primary/90 w-fit uppercase"
+          >
+            Get in touch
+          </Button>
         </div>
       </div>
     </section>
@@ -89,4 +56,3 @@ const CTA = () => {
 };
 
 export default CTA;
-

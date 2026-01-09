@@ -104,6 +104,7 @@
   --color-impact-dark: var(--impact-dark);
   --color-impact-light: var(--impact-light);
   --color-background-secondary: var(--background-secondary);
+  --color-background-lighter: var(--background-lighter);
   /* Border Radius */
   --radius: var(--radius);
   --radius-micro: 0.125rem;
@@ -114,6 +115,7 @@
 :root {
   --background: #ffffff;
   --background-secondary: #eee;
+  --background-lighter: #fffdf9;
   --foreground: #030a1c;
   --latest-news: #fffdf921;
   --gray-light: #ededed;

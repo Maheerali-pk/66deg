@@ -5,6 +5,7 @@ import NavbarButton from "@/components/NavbarButton";
 import NavDropdown, { type DropdownGroup } from "@/components/NavDropdown";
 import { useState, useEffect } from "react";
 import classNames from "classnames";
+import { Button } from "./ui/button";
 
 interface NavItem {
   label: string;
@@ -184,12 +185,12 @@ const Header = () => {
           ))}
         </div>
 
-        <NavbarButton
-          className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_4px_16px_hsl(217,91%,60%,0.3)] font-semibold tracking-wide uppercase text-xs h-12 px-6 py-3"
-          style={{ borderRadius: "0.125rem" }}
+        <Button
+          variant="secondary"
+          className="bg-primary text-white font-family-secondary hover:bg-primary/90"
         >
           CONTACT US
-        </NavbarButton>
+        </Button>
       </nav>
     </header>
   );
