@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import SectionHeadingWithSquare from "./section-heading-with-square";
 
 const BusinessImpact = () => {
   const stats = [
@@ -31,14 +32,9 @@ const BusinessImpact = () => {
 
   return (
     <section className="py-24 bg-background">
-      <div className="max-w-container mx-auto px-6">
+      <div className="container mx-auto">
         <div className="mb-16">
-          <div className="flex items-center gap-2 mb-4">
-            <div className="w-2 h-2 bg-black"></div>
-            <p className="text-black uppercase tracking-widest text-sm font-family-secondary">
-              WHAT WE DELIVER
-            </p>
-          </div>
+          <SectionHeadingWithSquare text="WHAT WE DELIVER" />
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <h2 className="text-2xl md:text-3xl lg:text-4xl text-foreground max-w-2xl">
               Quantifiable business impact for your data and AI investments.
@@ -59,18 +55,9 @@ const BusinessImpact = () => {
               className={`relative border border-navbar-border ${stat.bgColor} ${stat.textColor} p-10 rounded-micro min-h-[320px] flex flex-col`}
             >
               {stat.pattern && (
-                <div
-                  className="absolute right-0 top-0 bottom-0 w-32 opacity-20"
-                  style={{
-                    backgroundImage: `repeating-linear-gradient(
-                      45deg,
-                      rgba(255, 255, 255, 0),
-                      rgba(255, 255, 255, 0) 8px,
-                      rgba(255, 255, 255, 0.1) 8px,
-                      rgba(255, 255, 255, 0.1) 16px
-                    )`,
-                  }}
-                ></div>
+                <div className="absolute right-0 top-0 bottom-0 w-[26%] h-[40%] overflow-hidden">
+                  <img src="https://cdn.prod.website-files.com/68dd5adbcc75b2bc818c9064/68f900ab43c20e1a420ef226_graphic-5.svg"></img>
+                </div>
               )}
               <div
                 className={`text-[6.75rem] font-medium mb-60 leading-none ${stat.textColor}`}

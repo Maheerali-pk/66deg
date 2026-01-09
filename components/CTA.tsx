@@ -26,7 +26,7 @@ const CTA = () => {
   };
 
   return (
-    <section className="max-w-container mx-auto px-20 relative z-10 bg-navbar-border py-32 mt-40 mb-20">
+    <section className="container mx-auto px-20 relative z-10 bg-navbar-border py-32 mt-40 mb-20">
       <div className="flex justify-between gap-12 items-center">
         {/* Left side - Title */}
         <div>

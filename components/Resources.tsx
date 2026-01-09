@@ -33,7 +33,7 @@ const Resources = () => {
 
   return (
     <section className="py-24 bg-secondary">
-      <div className="max-w-container mx-auto px-6 h-full">
+      <div className="container mx-auto h-full">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-4">

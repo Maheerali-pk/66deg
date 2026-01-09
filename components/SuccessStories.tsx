@@ -22,7 +22,7 @@ const SuccessStories = () => {
 
   return (
     <section className="py-40 bg-dark-background text-white">
-      <div className="max-w-container mx-auto px-6">
+      <div className="container mx-auto ">
         <div className="mb-12">
           <h2 className="text-6xl text-center text-white mb-8">
             Success Stories

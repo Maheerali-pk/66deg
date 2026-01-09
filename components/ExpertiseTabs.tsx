@@ -2,6 +2,9 @@
 
 import { useState, useRef, useEffect } from "react";
 import classNames from "classnames";
+import SectionHeadingWithSquare from "./section-heading-with-square";
+import { Button } from "./ui/button";
+import { ArrowRight } from "lucide-react";
 
 const ExpertiseTabs = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -77,11 +80,9 @@ const ExpertiseTabs = () => {
 
   return (
     <section className="py-24 bg-background">
-      <div className="max-w-container mx-auto ">
+      <div className="container mx-auto ">
         <div className="mb-12 w-full">
-          <p className="text-muted-foreground uppercase tracking-widest text-sm mb-4">
-            OUR EXPERTISE
-          </p>
+          <SectionHeadingWithSquare text="OUR EXPERTISE" />
           <div className="flex justify-between w-full">
             <h2 className="text-6xl  text-foreground mb-4">
               Guiding Your Path to AI Value
@@ -98,7 +99,7 @@ const ExpertiseTabs = () => {
       {/* Tabs - Full Width */}
       <div className="flex flex-col gap-20">
         <div className="w-full">
-          <div className="max-w-container mx-auto ">
+          <div className="container mx-auto ">
             <div className="flex gap-4 relative">
               {tabs.map((tab, index) => (
                 <button
@@ -148,7 +149,7 @@ const ExpertiseTabs = () => {
         </div>
 
         {/* Tab Content */}
-        <div className="max-w-container mx-auto  ">
+        <div className="container mx-auto  ">
           <div
             className={classNames(
               "grid lg:grid-cols-[1fr_1.5fr] gap-60 items-start transition-all duration-300 ease-in-out",
@@ -165,11 +166,11 @@ const ExpertiseTabs = () => {
               <p className="text-muted-foreground leading-relaxed">
                 {tabs[activeTab].description}
               </p>
-              <div className="space-y-0 w-1/2">
+              <div className="space-y-0 w-2/3">
                 {tabs[activeTab].tags.map((tag, index) => (
                   <div
                     key={index}
-                    className="border-b border-divider-1 py-3 first:border-t-0"
+                    className="border-b border-divider-1 font-family-secondary py-1.5 first:border-t-0"
                   >
                     <span className="uppercase text-sm text-foreground">
                       {tag.toUpperCase()}
@@ -177,12 +178,14 @@ const ExpertiseTabs = () => {
                   </div>
                 ))}
               </div>
-              <a
-                href="#"
-                className="inline-flex items-center text-sm font-medium text-foreground hover:text-primary transition-colors"
+              <Button
+                variant="link"
+                size="link"
+                className="text-text-primary border-b border-b-text-primary"
               >
-                LEARN MORE →
-              </a>
+                Learn more
+                <ArrowRight className="w-4 h-4" />
+              </Button>
             </div>
             <div className="bg-background-secondary flex items-center justify-center rounded-sm overflow-hidden  h-full w-auto p-0">
               <img

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import SectionHeadingWithSquare from "./section-heading-with-square";
 
 const WhatWeDo = () => {
   const services = [
@@ -43,11 +44,10 @@ const WhatWeDo = () => {
 
   return (
     <section className="py-24 bg-background">
-      <div className="max-w-container mx-auto px-6">
+      <div className="container mx-auto ">
         <div className="mb-16">
-          <p className="uppercase text-black tracking-widest text-sm mb-4 font-family-secondary">
-            WHAT WE DO
-          </p>
+          <SectionHeadingWithSquare text="WHAT WE DO" />
+
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <h2 className="text-2xl md:text-3xl lg:text-4xl text-foreground max-w-3xl ">
               We help companies navigate through the complexities of AI,

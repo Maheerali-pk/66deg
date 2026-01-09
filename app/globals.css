@@ -100,11 +100,14 @@
   --color-gray-light: var(--gray-light);
   --color-gray-500: var(--gray-500);
 
+  --color-divider-2: var(--divider-2);
+
   --color-navbar-border: var(--navbar-border);
   --color-impact-dark: var(--impact-dark);
   --color-impact-light: var(--impact-light);
   --color-background-secondary: var(--background-secondary);
   --color-background-lighter: var(--background-lighter);
+  --color-primary-dull-1: var(--primary-dull-1);
   /* Border Radius */
   --radius: var(--radius);
   --radius-micro: 0.125rem;
@@ -190,7 +193,9 @@
   --impact-dark: #030a1c;
   --impact-light: #b3c5d0;
   --divider-1: #221e1e4d;
+  --divider-2: #eeeeee;
   --dark-background: #030a1c;
+  --primary-dull-1: #8e9fc3;
 }
 
 html {
@@ -276,3 +281,30 @@ h1 {
   font-size: 5.75rem;
   /* line-height: 1 !important; */
 }
+.container {
+  @apply max-w-container mx-auto px-6;
+}
+
+/* @media screen and (max-width: 1920px) {
+  html {
+    font-size: 100%;
+  }
+}
+
+@media screen and (max-width: 1700px) {
+  html {
+    font-size: 90%;
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  html {
+    font-size: 80%;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  html {
+    font-size: 70%;
+  }
+} */

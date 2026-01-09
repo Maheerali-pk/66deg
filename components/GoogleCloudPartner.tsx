@@ -16,7 +16,7 @@ const GoogleCloudPartner = () => {
 
   return (
     <section className="py-24">
-      <div className="max-w-container mx-auto px-6">
+      <div className="container mx-auto">
         {/* Container with Image Background */}
         <div className="relative rounded-sm overflow-hidden  ">
           {/* Background Image with brightness */}

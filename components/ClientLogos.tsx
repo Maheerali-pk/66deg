@@ -1,3 +1,5 @@
+import Marquee from "react-fast-marquee";
+
 const ClientLogos = () => {
   const logos = [
     {
@@ -35,37 +37,21 @@ const ClientLogos = () => {
   ];
 
   return (
-    <section className="py-12 bg-background overflow-hidden border-t border-border/30 max-w-container  mx-auto">
-      <div className="relative">
-        <div className="flex marquee">
-          {/* First set of logos */}
-          {logos.map((logo, index) => (
-            <div
-              key={`first-${index}`}
-              className="flex-shrink-0 mx-8 flex items-center justify-center"
-            >
-              <img
-                src={logo.url}
-                alt={logo.name}
-                className="h-8 w-auto opacity-60 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
-              />
-            </div>
-          ))}
-          {/* Duplicate for seamless loop */}
-          {logos.map((logo, index) => (
-            <div
-              key={`second-${index}`}
-              className="flex-shrink-0 mx-8 flex items-center justify-center"
-            >
-              <img
-                src={logo.url}
-                alt={logo.name}
-                className="h-8 w-auto opacity-60 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
+    <section className="py-12 bg-background overflow-hidden border-t border-border/30 container mx-auto">
+      <Marquee speed={50} pauseOnHover gradient={false} autoFill>
+        {logos.map((logo, index) => (
+          <div
+            key={index}
+            className="shrink-0 mx-4 flex items-center justify-center"
+          >
+            <img
+              src={logo.url}
+              alt={logo.name}
+              className="h-8 w-auto opacity-60 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
+            />
+          </div>
+        ))}
+      </Marquee>
     </section>
   );
 };

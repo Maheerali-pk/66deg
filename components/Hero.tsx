@@ -23,7 +23,7 @@ const Hero = () => {
         <source src="/videos/hero.mp4" type="video/mp4" />
       </video>
 
-      <div className="relative z-20 max-w-container mx-auto px-6 w-full flex justify-between items-end">
+      <div className="relative z-20 container mx-auto  w-full flex justify-between items-end">
         <div className="flex flex-col gap-16">
           <p
             className="text-white  leading-relaxed fade-in-up text-2xl max-w-lg"

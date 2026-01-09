@@ -114,7 +114,7 @@ const Header = () => {
   return (
     <header
       className={classNames(
-        "fixed top-0 left-0 right-0 z-50 px-4 pt-7 transition-transform duration-300 ease-in-out",
+        "fixed container top-0 left-0 right-0 z-50 px-4 pt-7 transition-transform duration-300 ease-in-out",
         {
           "-translate-y-full": !isVisible,
           "translate-y-0": isVisible,
@@ -123,7 +123,7 @@ const Header = () => {
     >
       <nav
         className={classNames(
-          " max-w-container mx-auto border border-navbar-border/50 backdrop-blur-2xl shadow-sm rounded px-6 h-16 flex items-center justify-between transition-all duration-300",
+          " mx-auto border border-navbar-border/50 backdrop-blur-2xl shadow-sm rounded px-6 h-16 flex items-center justify-between transition-all duration-300",
           {
             "bg-white ": isAnyDropdownOpen || (isVisible && isPastHero),
             "bg-white/10 ": !isAnyDropdownOpen && !(isVisible && isPastHero),
