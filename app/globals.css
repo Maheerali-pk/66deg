@@ -65,6 +65,7 @@
   --font-family-secondary: "Fira Code", monospace;
 
   /* Colors */
+  --color-dark-background: var(--dark-background);
   --color-divider-1: var(--divider-1);
   --color-background: var(--background);
   --color-latest-news: var(--latest-news);
@@ -187,6 +188,7 @@
   --impact-dark: #030a1c;
   --impact-light: #b3c5d0;
   --divider-1: #221e1e4d;
+  --dark-background: #030a1c;
 }
 
 html {
