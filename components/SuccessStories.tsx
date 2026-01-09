@@ -45,10 +45,10 @@ const SuccessStories = () => {
               </div>
               <div className="p-6 bg-white/10 absolute bottom-4 mx-4 h-60 border-white/5 border flex justify-between flex-col">
                 <h3 className="text-white  text-4xl">{story.title}</h3>
-                <span className="text-white uppercase font-family-secondary border-b border-b-white w-fit text-sm flex items-center gap-2 group-hover:gap-3 transition-all duration-300">
+                <Button variant="link" size="link">
                   Learn more
                   <ArrowRight className="w-4 h-4" />
-                </span>
+                </Button>
               </div>
             </a>
           ))}

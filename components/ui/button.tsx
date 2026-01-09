@@ -17,11 +17,12 @@ const buttonVariants = cva(
         secondary:
           "bg-btn-bg text-black hover:bg-btn-bg/80 font-family-secondary hover:bg-[#d3daea]",
         ghost: "hover:bg-secondary hover:text-secondary-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+        link: "text-white uppercase font-family-secondary border-b border-b-white w-fit text-sm flex items-center gap-2 group-hover:gap-3 transition-all duration-300 ",
         nav: "text-foreground/80 hover:text-foreground bg-transparent font-normal py-0!",
         cta: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_4px_16px_hsl(217,91%,60%,0.3)] font-semibold tracking-wide uppercase text-xs",
       },
       size: {
+        link: "py-0 px-0",
         default: "px-4 py-3",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
