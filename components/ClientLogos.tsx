@@ -37,7 +37,7 @@ const ClientLogos = () => {
   ];
 
   return (
-    <section className="py-12 bg-background overflow-hidden border-t border-border/30 container mx-auto">
+    <section className="py-12 bg-background overflow-hidden container mx-auto mt-10">
       <Marquee speed={50} pauseOnHover gradient={false} autoFill>
         {logos.map((logo, index) => (
           <div

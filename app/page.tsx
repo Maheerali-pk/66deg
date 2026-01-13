@@ -15,15 +15,15 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <Header />
       <Hero />
-      <ClientLogos />
+      {/* <ClientLogos />
       <WhatWeDo />
       <BusinessImpact />
       <ExpertiseTabs />
       <GoogleCloudPartner />
       <SuccessStories />
       <Resources />
-      <CTA />
-      <Footer />
+      <CTA /> */}
+      {/* <Footer /> */}
     </div>
   );
 }

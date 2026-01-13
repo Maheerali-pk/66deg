@@ -32,7 +32,7 @@ const Resources = () => {
   ];
 
   return (
-    <section className="py-24 bg-secondary">
+    <section className="py-24 ">
       <div className="container mx-auto h-full">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
           <div>
@@ -52,7 +52,7 @@ const Resources = () => {
             <>
               <div
                 key={index}
-                className="h-full flex-1 flex flex-col  group bg-card border border-border/50 rounded-sm overflow-hidden  "
+                className="h-full flex-1 flex flex-col  group bg-card  rounded-sm overflow-hidden  "
               >
                 <div className="aspect-video overflow-hidden">
                   <img

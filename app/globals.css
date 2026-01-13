@@ -129,7 +129,7 @@
   --popover: #ffffff;
   --popover-foreground: #13171f;
 
-  --primary: #0b66ff;
+  --primary: #0052ff;
   --primary-foreground: #ffffff;
   --btn-bg: #e1e6f1;
 
@@ -210,6 +210,7 @@ body {
   font-variation-settings: normal;
 }
 
+@custom-variant sm (@media (max-width: 767px));
 /* Custom Utilities */
 .text-gradient {
   background-clip: text;
@@ -277,10 +278,6 @@ body {
   border-radius: 0.125rem;
 }
 
-h1 {
-  font-size: 5.75rem;
-  /* line-height: 1 !important; */
-}
 .container {
   @apply max-w-container mx-auto px-6;
 }

@@ -23,17 +23,17 @@ const Hero = () => {
         <source src="/videos/hero.mp4" type="video/mp4" />
       </video>
 
-      <div className="relative z-20 container mx-auto  w-full flex justify-between items-end">
-        <div className="flex flex-col gap-16">
+      <div className="relative z-20 container mx-auto  w-full flex sm:flex-col sm:gap-6 justify-between sm:items-start items-end">
+        <div className="flex flex-col gap-16 sm:gap-8">
           <p
-            className="text-white  leading-relaxed fade-in-up text-2xl max-w-lg"
+            className="text-white  leading-relaxed fade-in-up sm:text-lg text-2xl sm:max-w-full max-w-lg"
             style={{ animationDelay: "0.1s" }}
           >
             Accelerate your agentic transformation with a proven approach, data
             and AI expertise, extensive IP, and an AI-powered delivery model.
           </p>
           <h1
-            className="text-5xl md:text-6xl lg:text-7xl font-light text-white  fade-in-up"
+            className="sm:text-6xl  text-8xl  font-light text-white  fade-in-up"
             style={{ animationDelay: "0.2s" }}
           >
             Building the
@@ -58,7 +58,7 @@ const Hero = () => {
             />
             <div>
               <p className="text-gray-light/60 text-sm mb-1">Latest News</p>
-              <p className="text-gray-light  leading-snug">
+              <p className="text-gray-light  leading-snug sm:text-xs">
                 66degrees recognized as Leader in Everest <br /> Group PEAK
                 Matrix for Google Cloud Services
               </p>
