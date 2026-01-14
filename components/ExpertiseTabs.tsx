@@ -11,6 +11,7 @@ const ExpertiseTabs = () => {
   const [isContentVisible, setIsContentVisible] = useState(true);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const [tabWidths, setTabWidths] = useState<number[]>([]);
+  const [isMobile, setIsMobile] = useState(false);
 
   const tabs = [
     {
@@ -62,7 +63,10 @@ const ExpertiseTabs = () => {
   ];
 
   useEffect(() => {
-    const updateTabWidths = () => {
+    const updateTabDimensions = () => {
+      const isMobileView = window.innerWidth < 768;
+      setIsMobile(isMobileView);
+
       const widths = tabRefs.current.map((ref) => {
         return ref ? ref.offsetWidth : 0;
       });
@@ -70,11 +74,11 @@ const ExpertiseTabs = () => {
     };
 
     // Small delay to ensure DOM is ready
-    const timeoutId = setTimeout(updateTabWidths, 0);
-    window.addEventListener("resize", updateTabWidths);
+    const timeoutId = setTimeout(updateTabDimensions, 0);
+    window.addEventListener("resize", updateTabDimensions);
     return () => {
       clearTimeout(timeoutId);
-      window.removeEventListener("resize", updateTabWidths);
+      window.removeEventListener("resize", updateTabDimensions);
     };
   }, [activeTab]);
 
@@ -83,8 +87,8 @@ const ExpertiseTabs = () => {
       <div className="container mx-auto ">
         <div className="mb-12 w-full">
           <SectionHeadingWithSquare text="OUR EXPERTISE" />
-          <div className="flex justify-between w-full">
-            <h2 className="text-6xl  text-foreground mb-4">
+          <div className="flex sm:flex-col justify-between w-full">
+            <h2 className="sm:text-4xl text-6xl  text-foreground mb-4">
               Guiding Your Path to AI Value
             </h2>
             <p className="text-muted-foreground max-w-lg text-lg">
@@ -100,7 +104,7 @@ const ExpertiseTabs = () => {
       <div className="flex flex-col gap-20">
         <div className="w-full">
           <div className="container mx-auto ">
-            <div className="flex gap-4 relative">
+            <div className="sm:flex-col flex gap-4 relative">
               {tabs.map((tab, index) => (
                 <button
                   key={index}
@@ -117,32 +121,56 @@ const ExpertiseTabs = () => {
                     }
                   }}
                   className={classNames(
-                    "flex-1 uppercase text-lg cursor-pointer text-text-primary transition-colors duration-300 pb-3 border-b border-divider-1 -mb-[2px] relative z-0",
+                    "flex-1 uppercase sm:text-sm sm:text-start text-lg cursor-pointer text-text-primary transition-colors duration-300 pb-3 -mb-[2px] relative z-0",
                     {
                       "hover:text-foreground": activeTab !== index,
+                      "border-b border-divider-1": activeTab !== index,
                     }
                   )}
                 >
                   {tab.label.toUpperCase()}
                 </button>
               ))}
-              {/* All indicator lines - each tab has its own line, all stacked at same vertical position */}
+              {/* All indicator lines - horizontal on desktop, positioned per tab on mobile */}
               {tabs.map((tab, index) => {
                 const tabWidth = tabWidths[index] || 0;
                 const tabLeft = tabRefs.current[index]
                   ? tabRefs.current[index]!.offsetLeft
                   : 0;
+                const tabTop = tabRefs.current[index]
+                  ? tabRefs.current[index]!.offsetTop
+                  : 0;
+                const tabHeight = tabRefs.current[index]
+                  ? tabRefs.current[index]!.offsetHeight
+                  : 0;
                 const isActive = activeTab === index;
-                return (
-                  <div
-                    key={`indicator-${index}`}
-                    className="absolute bottom-[-2px] h-px bg-primary transition-all duration-500 ease-in-out z-10"
-                    style={{
-                      left: `${tabLeft}px`,
-                      width: isActive ? `${tabWidth}px` : "0px",
-                    }}
-                  />
-                );
+
+                if (isMobile) {
+                  // Mobile column layout - indicator at bottom of active tab
+                  return (
+                    <div
+                      key={`indicator-${index}`}
+                      className="absolute h-px bg-primary transition-all duration-500 ease-in-out z-20"
+                      style={{
+                        top: `${tabTop + tabHeight - 2}px`,
+                        left: "0px",
+                        width: isActive ? "100%" : "0px",
+                      }}
+                    />
+                  );
+                } else {
+                  // Desktop row layout - indicator at bottom of container
+                  return (
+                    <div
+                      key={`indicator-${index}`}
+                      className="absolute bottom-[-2px] h-px bg-primary transition-all duration-500 ease-in-out z-10"
+                      style={{
+                        left: `${tabLeft}px`,
+                        width: isActive ? `${tabWidth}px` : "0px",
+                      }}
+                    />
+                  );
+                }
               })}
             </div>
           </div>
@@ -152,7 +180,7 @@ const ExpertiseTabs = () => {
         <div className="container mx-auto  ">
           <div
             className={classNames(
-              "grid lg:grid-cols-[1fr_1.5fr] gap-60 items-start transition-all duration-300 ease-in-out",
+              "grid lg:grid-cols-[1fr_1.5fr] sm:gap-10 gap-60 items-start transition-all duration-300 ease-in-out",
               {
                 "opacity-0 translate-y-2": !isContentVisible,
                 "opacity-100 translate-y-0": isContentVisible,

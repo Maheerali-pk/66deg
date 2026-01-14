@@ -94,9 +94,9 @@ const Footer = () => {
     <footer className="bg-dark-background border-t border-white/10 py-16 text-white">
       <div className="container mx-auto  w-full">
         <div className="h-px w-full bg-divider-2/25 my-10"></div>
-        <div className="grid grid-cols-[1fr_min-content_2fr] w-full gap-10">
+        <div className="grid sm:grid-cols-1 grid-cols-[1fr_min-content_2fr] w-full sm:gap-0 gap-10">
           {/* Newsletter Section - Left */}
-          <div className=" flex flex-col gap-6 justify-between">
+          <div className=" flex flex-col gap-6 sm:gap-20 justify-between">
             <img
               src="https://cdn.prod.website-files.com/68dd5adbcc75b2bc818c9064/68dd5adbcc75b2bc818c9109_86b633a7db00d9d1b3aa1844dbd22289_logomark.svg"
               loading="lazy"
@@ -131,7 +131,7 @@ const Footer = () => {
 
           <div className="h-full w-px bg-divider-2/25"></div>
           {/* Navigation Links - Right */}
-          <div className="flex justify-between gap-8 w-full ">
+          <div className="flex justify-between gap-8 w-full sm:hidden">
             {footerLinks.map((section, index) => (
               <div key={index} className="flex flex-col gap-10">
                 <h4 className="text-gray-light/60 text-sm uppercase tracking-wider font-family-secondary">
@@ -160,7 +160,7 @@ const Footer = () => {
         <div className="">
           <div className="flex flex-col  items-center justify-between gap-10">
             {/* Social Media Buttons - Left */}
-            <div className="flex items-center gap-4 w-full">
+            <div className="flex items-center sm:grid sm:grid-cols-2 gap-4 w-full">
               {socialLinks.map((social, index) => (
                 <Button
                   variant="secondary"
@@ -173,16 +173,16 @@ const Footer = () => {
             </div>
 
             {/* Copyright and Legal Links - Right */}
-            <div className="flex w-full justify-between items-center gap-4 md:gap-6">
-              <p className="text-white text-sm">
+            <div className="flex w-full sm:flex-col sm:items-start justify-between items-center gap-4 md:gap-6">
+              <p className="text-white text-sm sm:text-xs">
                 Copyright 2025 | Powered by 66degrees
               </p>
-              <div className="flex items-center gap-10 flex-wrap justify-center">
+              <div className="flex items-center gap-10 sm:gap-4 flex-wrap sm:justify-start justify-center">
                 {legalLinks.map((legalLink, index) => (
                   <Link
                     key={index}
                     href={legalLink.link}
-                    className="text-gray-light text-sm hover:text-white transition-colors duration-200"
+                    className="text-gray-light text-sm sm:text-xs hover:text-white transition-colors duration-200"
                   >
                     {legalLink.label}
                   </Link>

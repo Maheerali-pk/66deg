@@ -26,20 +26,19 @@ const CTA = () => {
   };
 
   return (
-    <section className="container mx-auto relative z-10 bg-navbar-border py-32 mt-0 mb-20">
-      <div className="flex justify-between gap-12 items-center px-20">
+    <section className="container rounded-micro  sm:w-[calc(100%-2rem)] mx-auto sm:mx-4 relative z-10 bg-navbar-border sm:py-10 sm:!px-10 py-32 mt-0 mb-20">
+      <div className="flex sm:flex-col sm:justify-start justify-between sm:gap-6 gap-12 items-center px-20 sm:px-0">
         {/* Left side - Title */}
-        <div>
-          <h2 className="text-6xl text-foreground  leading-tight">
-            Start Accelerating your
-            <br />
+        <div className="sm:w-full ">
+          <h2 className="text-6xl sm:text-4xl text-foreground sm:w-full  leading-tight">
+            Start Accelerating your <br className="sm:hidden block" />
             Path to AI Value
           </h2>
         </div>
 
         {/* Right side - Description and Button */}
         <div className="flex flex-col gap-6 max-w-lg">
-          <p className="text-foreground text-lg leading-relaxed">
+          <p className="text-foreground text-lg sm:text-sm leading-relaxed">
             Get in touch today and start defining your path towards building the
             Agentic Enterprise.
           </p>

@@ -52,7 +52,7 @@ const BusinessImpact = () => {
           {stats.map((stat, index) => (
             <div
               key={index}
-              className={`relative border border-navbar-border ${stat.bgColor} ${stat.textColor} p-10 rounded-micro min-h-[320px] flex flex-col`}
+              className={`relative border border-navbar-border ${stat.bgColor} ${stat.textColor} sm:p-6 p-10 rounded-micro   min-h-[320px] sm:min-h-auto flex flex-col`}
             >
               {stat.pattern && (
                 <div className="absolute right-0 top-0 bottom-0 w-[26%] h-[40%] overflow-hidden">
@@ -60,12 +60,12 @@ const BusinessImpact = () => {
                 </div>
               )}
               <div
-                className={`text-[6.75rem] font-medium mb-60 leading-none ${stat.textColor}`}
+                className={`sm:text-6xl text-[6.75rem] font-medium sm:mb-20 mb-60 leading-none ${stat.textColor}`}
               >
                 {stat.value}
               </div>
               <p
-                className={`text-lg leading-relaxed ${stat.textColor} opacity-90`}
+                className={`text-lg sm:text-sm leading-relaxed ${stat.textColor} opacity-90`}
               >
                 {stat.description}
               </p>

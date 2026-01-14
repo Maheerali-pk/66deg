@@ -15,7 +15,7 @@ const GoogleCloudPartner = () => {
   const rightColumn = specializations.slice(3);
 
   return (
-    <section className="py-24">
+    <section className="py-24 sm:py-10">
       <div className="container mx-auto">
         {/* Container with Image Background */}
         <div className="relative rounded-sm overflow-hidden  ">
@@ -27,13 +27,13 @@ const GoogleCloudPartner = () => {
           />
 
           {/* All Content Overlay */}
-          <div className="inset-0 flex flex-col justify-between py-24 px-12 z-10">
+          <div className="inset-0 flex flex-col justify-between sm:py-10 py-24 sm:px-4 px-12 z-10">
             {/* Hero Content */}
             <div className="text-center space-y-6 max-w-3xl mx-auto z-10">
-              <h2 className="text-6xl font-light text-white">
+              <h2 className="sm:text-4xl text-6xl  font-light text-white">
                 Google Cloud's Leading Agentic AI Partner
               </h2>
-              <p className="text-white/90  text-2xl">
+              <p className="text-white/90 text-lg  sm:text-base">
                 Our Premier Partner status is the assurance your enterprise
                 needs. We provide unmatched access to the forefront of Google AI
                 innovation, de-risking your most ambitious projects and
@@ -51,9 +51,9 @@ const GoogleCloudPartner = () => {
             </div>
 
             {/* Information Cards Section */}
-            <div className="grid md:grid-cols-[1fr_3fr] gap-6 mt-16 bg-white/10 backdrop-blur-3xl p-10">
+            <div className="grid md:grid-cols-[1fr_3fr] gap-6 mt-16 bg-white/10 backdrop-blur-3xl p-10 sm:p-4">
               {/* Left Card - Partner of the Year */}
-              <div className="bg-white/95 backdrop-blur-md rounded-micro p-8 shadow-lg flex flex-col gap-10">
+              <div className="bg-white/95 backdrop-blur-md rounded-micro p-8 sm:px-4 shadow-lg flex flex-col gap-10">
                 <div className="flex flex-col">
                   <div className="text-6xl  text-foreground mb-2">2025</div>
                   <div className="text-sm text-text-primary/60 uppercase font-family-secondary">
@@ -61,18 +61,18 @@ const GoogleCloudPartner = () => {
                   </div>
                   <div className="border-b border-divider-1 mb-4"></div>
                 </div>
-                <p className="text-text-primary  leading-tight">
+                <p className="text-text-primary sm:text-sm  leading-tight">
                   The 2025 Partner of the Year award is external validation of
                   our leadership in the Google ecosystem.
                 </p>
               </div>
 
               {/* Right Card - Google Cloud Specializations */}
-              <div className="bg-white/95 backdrop-blur-md flex flex-col justify-between rounded-micro p-8 shadow-lg">
+              <div className="bg-white/95 backdrop-blur-md flex flex-col justify-between rounded-micro p-8 sm:px-4 shadow-lg">
                 <h3 className="text-3xl text-foreground mb-6">
                   Google Cloud Specializations
                 </h3>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-1 sm:gap-0 gap-4">
                   {/* Left Column */}
                   <div className="space-y-0">
                     {leftColumn.map((spec, index) => (

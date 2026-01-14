@@ -1,7 +1,22 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperType } from "swiper";
+import { useRef, useState } from "react";
+
+// Import Swiper styles
+import "swiper/css";
+import SectionHeadingWithSquare from "./section-heading-with-square";
+import SwiperPagination from "./SwiperPagination";
+import ResourceCard from "./ResourceCard";
 
 const Resources = () => {
+  const swiperRef = useRef<SwiperType | null>(null);
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+
   const resources = [
     {
       type: "success stories",
@@ -36,58 +51,65 @@ const Resources = () => {
       <div className="container mx-auto h-full">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-2 h-2 bg-foreground"></div>
-              <p className="text-text-primary uppercase  text-sm">Resources</p>
-            </div>
-            <h2 className="text-6xl  ">Latest from 66degrees</h2>
+            <SectionHeadingWithSquare text="resources"></SectionHeadingWithSquare>
+            <h2 className="text-6xl sm:text-4xl  ">Latest from 66degrees</h2>
           </div>
-          <Button variant="secondary" className="rounded-none uppercase">
+          <Button
+            variant="secondary"
+            className="rounded-none uppercase sm:w-fit"
+          >
             Explore more resources
           </Button>
         </div>
 
-        <div className="grid grid-flow-col  gap-6 h-full">
+        {/* Desktop Grid Layout */}
+        <div className="grid grid-flow-col gap-6 h-full sm:hidden">
           {resources.map((resource, index) => (
             <>
-              <div
-                key={index}
-                className="h-full flex-1 flex flex-col  group bg-card  rounded-sm overflow-hidden  "
-              >
-                <div className="aspect-video overflow-hidden">
-                  <img
-                    src={resource.image}
-                    alt={resource.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6 flex flex-col flex-1  justify-between gap-10">
-                  <div className="flex flex-col">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="bg-gray-100 text-muted-foreground text-xs uppercase tracking-wider px-2 py-1 rounded">
-                        {resource.type}
-                      </span>
-                      <span className="text-muted-foreground text-xs">
-                        {resource.date}
-                      </span>
-                    </div>
-                    <h3 className="text-2xl">{resource.title}</h3>
-                  </div>
-                  <Button
-                    variant="link"
-                    size="link"
-                    className="text-text-primary border-b-text-text-primary"
-                  >
-                    {resource.link}
-                    <ArrowRight className="w-4 h-4" />
-                  </Button>
-                </div>
-              </div>
+              <ResourceCard key={index} {...resource} />
               {index !== resources.length - 1 && (
                 <div className="w-px bg-divider-1/70"></div>
               )}
             </>
           ))}
+        </div>
+
+        {/* Mobile Swiper Layout */}
+        <div className="hidden sm:block">
+          <div className="relative">
+            <Swiper
+              onSwiper={(swiper) => {
+                swiperRef.current = swiper;
+                setIsBeginning(swiper.isBeginning);
+                setIsEnd(swiper.isEnd);
+                setActiveIndex(swiper.activeIndex);
+              }}
+              onSlideChange={(swiper) => {
+                setIsBeginning(swiper.isBeginning);
+                setIsEnd(swiper.isEnd);
+                setActiveIndex(swiper.activeIndex);
+              }}
+              spaceBetween={24}
+              slidesPerView={1}
+              className="resources-swiper h-full"
+            >
+              {resources.map((resource, index) => (
+                <SwiperSlide key={index}>
+                  <ResourceCard {...resource} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <SwiperPagination
+              swiperRef={swiperRef}
+              isBeginning={isBeginning}
+              isEnd={isEnd}
+              totalSlides={resources.length}
+              activeIndex={activeIndex}
+              onBulletClick={(index) => {
+                swiperRef.current?.slideTo(index);
+              }}
+            />
+          </div>
         </div>
       </div>
     </section>
