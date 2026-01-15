@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 const ContactInfo = () => {
   return (
     <section className="">
-      <div className="container mx-auto">
+      <div className="mx-auto">
         <h2 className="text-6xl sm:text-3xl text-white mb-20">
           We'd Love to Hear From You and Answer Your Questions
         </h2>

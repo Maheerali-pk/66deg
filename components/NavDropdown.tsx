@@ -6,9 +6,14 @@ import { Plus } from "lucide-react";
 import { useState, useRef, useEffect, ReactElement } from "react";
 import classNames from "classnames";
 
+export interface DropdownItem {
+  label: string;
+  href?: string;
+}
+
 export interface DropdownGroup {
   category: string | null;
-  items: string[];
+  items: DropdownItem[];
 }
 
 export interface NavDropdownProps {
@@ -88,14 +93,14 @@ const NavDropdown = ({
   };
 
   const renderDropdownItem = (
-    item: string,
+    item: DropdownItem,
     itemIndex: number,
     isMultiColumn: boolean
   ) => {
     return (
       <li key={itemIndex}>
         <Link
-          href="#"
+          href={item.href || "#"}
           className={classNames(
             "block text-text-primary hover:text-primary transition-colors whitespace-nowrap",
             {
@@ -104,7 +109,7 @@ const NavDropdown = ({
             }
           )}
         >
-          {item}
+          {item.label}
         </Link>
       </li>
     );

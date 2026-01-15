@@ -13,8 +13,8 @@ const AboutUsMission = () => {
     (group) => group.category === "Service"
   );
 
-  const industries = industryGroup?.items || [];
-  const services = serviceGroup?.items || [];
+  const industries = industryGroup?.items?.map((item) => item.label) || [];
+  const services = serviceGroup?.items?.map((item) => item.label) || [];
 
   return (
     <section className="py-24 sm:py-16">

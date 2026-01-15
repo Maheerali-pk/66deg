@@ -113,7 +113,7 @@ const CustomSelect = ({
         <div className="max-h-60 overflow-y-auto">
           {options.map((option, index) => (
             <button
-              key={index}
+              key={option}
               type="button"
               onClick={() => handleSelect(option)}
               className={classNames(

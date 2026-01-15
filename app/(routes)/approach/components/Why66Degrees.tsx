@@ -39,12 +39,12 @@ const Why66Degrees = () => {
             <div className="space-y-4">
               <CustomSelect
                 label="Industries"
-                options={industries}
+                options={industries.map((industry) => industry.label)}
                 placeholder="Select Item"
               />
               <CustomSelect
                 label="Services"
-                options={services}
+                options={services.map((service) => service.label)}
                 placeholder="Select Item"
               />
             </div>
