@@ -30,6 +30,15 @@ const NavDropdown = ({
 }: NavDropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [contentHeight, setContentHeight] = useState(0);
+
+  // Measure content height when dropdown opens/closes
+  useEffect(() => {
+    if (contentRef.current) {
+      setContentHeight(isOpen ? contentRef.current.scrollHeight : 0);
+    }
+  }, [isOpen]);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -175,21 +184,20 @@ const NavDropdown = ({
   };
 
   const renderDropdownMenu = () => {
-    if (!isOpen) {
-      return null;
-    }
-
     return (
       <div
         className={classNames(
-          "absolute top-full left-0 bg-white border-t border-navbar-border shadow-lg z-[100]",
+          "absolute top-full left-0 bg-white border-t border-navbar-border shadow-lg z-[100] overflow-hidden transition-[max-height] duration-500 ease-out",
           {
             "w-[900px]": isMultiColumn,
             "w-full": !isMultiColumn,
           }
         )}
+        style={{
+          maxHeight: isOpen ? contentHeight : 0,
+        }}
       >
-        <div className="px-6 pt-6 pb-10 flex flex-col">
+        <div ref={contentRef} className="px-6 pt-6 pb-10 flex flex-col">
           {renderDropdownContent()}
         </div>
       </div>
