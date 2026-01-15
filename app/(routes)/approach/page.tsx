@@ -9,6 +9,7 @@ import ApproachFAQ from "./components/ApproachFAQ";
 import ApproachCTA from "./components/ApproachCTA";
 import Resources from "@/components/Resources";
 import CTA from "@/components/CTA";
+import SuccessStories from "@/components/SuccessStories";
 
 export default function ApproachPage() {
   return (
@@ -17,7 +18,7 @@ export default function ApproachPage() {
       <ApproachHero />
       <Why66Degrees />
       <FrameworkPillars />
-      <ApproachSuccessStories />
+      <SuccessStories />
       <TransformationLeaders />
       <Resources></Resources>
       <ApproachFAQ />
