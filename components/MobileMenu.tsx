@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import classNames from "classnames";
 import { Button } from "./ui/button";
 import { navItems } from "@/data/navigation";
-import { ChevronDown } from "lucide-react";
+import { Plus, Minus } from "lucide-react";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -16,6 +16,10 @@ interface MobileMenuProps {
 const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
   const router = useRouter();
   const [openAccordions, setOpenAccordions] = useState<Set<string>>(new Set());
+  const accordionRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+  const [accordionHeights, setAccordionHeights] = useState<{
+    [key: string]: number;
+  }>({});
 
   // Prevent body scroll when menu is open
   useEffect(() => {
@@ -28,6 +32,25 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
       document.body.style.overflow = "";
     };
   }, [isOpen]);
+
+  // Measure accordion heights when they open/close
+  useEffect(() => {
+    const newHeights: { [key: string]: number } = {};
+    navItems.forEach((item) => {
+      if (item.hasDropdown) {
+        const ref = accordionRefs.current[item.label];
+        if (ref) {
+          // Measure the natural height of the content
+          newHeights[item.label] = openAccordions.has(item.label)
+            ? ref.scrollHeight
+            : 0;
+        } else {
+          newHeights[item.label] = 0;
+        }
+      }
+    });
+    setAccordionHeights(newHeights);
+  }, [openAccordions]);
 
   const toggleAccordion = (label: string) => {
     const newOpenAccordions = new Set(openAccordions);
@@ -52,33 +75,60 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
       <div className="container mx-auto px-6 pt-24 pb-8 h-full overflow-y-auto">
         <nav className="flex flex-col gap-4">
           {navItems.map((item) => (
-            <div
-              key={item.label}
-              className="border-b border-gray-200 last:border-b-0"
-            >
+            <div key={item.label} className=" last:border-b-0">
               {item.hasDropdown && item.dropdownItems ? (
                 <div>
                   <button
                     onClick={() => toggleAccordion(item.label)}
                     className="w-full flex items-center justify-between py-4 text-left text-text-primary hover:text-primary transition-colors"
                   >
-                    <span className="text-lg font-medium">{item.label}</span>
-                    <ChevronDown
-                      size={20}
-                      className={classNames(
-                        "transition-transform duration-200",
-                        {
-                          "rotate-180": openAccordions.has(item.label),
-                        }
-                      )}
-                    />
+                    <span className="text-xl ">{item.label}</span>
+                    <div className="relative w-5 h-5 shrink-0">
+                      <Plus
+                        className={classNames(
+                          "absolute inset-0 w-5 h-5 text-text-primary transition-all duration-500 ease-in-out",
+                          {
+                            "opacity-0 rotate-90 scale-0": openAccordions.has(
+                              item.label
+                            ),
+                            "opacity-100 rotate-0 scale-100":
+                              !openAccordions.has(item.label),
+                          }
+                        )}
+                      />
+                      <Minus
+                        className={classNames(
+                          "absolute inset-0 w-5 h-5 text-text-primary transition-all duration-500 ease-in-out",
+                          {
+                            "opacity-100 rotate-0 scale-100":
+                              openAccordions.has(item.label),
+                            "opacity-0 -rotate-90 scale-0": !openAccordions.has(
+                              item.label
+                            ),
+                          }
+                        )}
+                      />
+                    </div>
                   </button>
-                  {openAccordions.has(item.label) && (
-                    <div className="pb-4 space-y-4">
+                  <div
+                    className="overflow-hidden transition-[max-height] duration-500 ease-out"
+                    style={{
+                      maxHeight: accordionHeights[item.label] || 0,
+                    }}
+                  >
+                    <div
+                      ref={(el) => {
+                        accordionRefs.current[item.label] = el;
+                      }}
+                      className="pb-4 space-y-4"
+                    >
                       {item.dropdownItems.map((group, groupIndex) => (
-                        <div key={groupIndex} className="space-y-2">
+                        <div
+                          key={groupIndex}
+                          className="space-y-2 border-b border-divider-1  "
+                        >
                           {group.category && (
-                            <h3 className="text-sm font-semibold text-text-secondary uppercase tracking-wide mb-2">
+                            <h3 className="text-xs text-text-primary/60 uppercase tracking-wide mb-5">
                               {group.category}
                             </h3>
                           )}
@@ -88,7 +138,7 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                                 <Link
                                   href="#"
                                   onClick={onClose}
-                                  className="block py-2 text-text-primary/80 hover:text-primary transition-colors"
+                                  className="block py-2  text-xs text-text-primary/80 hover:text-primary transition-colors"
                                 >
                                   {subItem}
                                 </Link>
@@ -98,13 +148,13 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                         </div>
                       ))}
                     </div>
-                  )}
+                  </div>
                 </div>
               ) : (
                 <Link
                   href={item.href || "#"}
                   onClick={onClose}
-                  className="block py-4 text-lg font-medium text-text-primary hover:text-primary transition-colors"
+                  className="block py-4 text-xl  text-text-primary hover:text-primary transition-colors"
                 >
                   {item.label}
                 </Link>
