@@ -110,6 +110,7 @@
   --color-background-secondary: var(--background-secondary);
   --color-background-lighter: var(--background-lighter);
   --color-primary-dull-1: var(--primary-dull-1);
+  --color-input-border: var(--input-border);
   /* Border Radius */
   --radius: var(--radius);
   --radius-micro: 0.125rem;
@@ -188,6 +189,7 @@
   --sidebar-accent-foreground: #13171f;
   --sidebar-border: #e5e7eb;
   --sidebar-ring: #0b66ff;
+  --input-border: #e5e7eb;
 
   --navbar-border: #b3c5d0;
 
@@ -285,7 +287,7 @@ body {
   @apply max-w-container mx-auto px-6;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .container {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
@@ -350,7 +352,7 @@ body {
   color: #374151;
 }
 
-/* @media screen and (max-width: 1920px) {
+@media screen and (max-width: 1920px) {
   html {
     font-size: 100%;
   }
@@ -372,4 +374,19 @@ body {
   html {
     font-size: 70%;
   }
-} */
+}
+@media screen and (max-width: 1100px) {
+  html {
+    font-size: 60%;
+  }
+}
+@media screen and (max-width: 900px) {
+  html {
+    font-size: 50%;
+  }
+}
+@media screen and (max-width: 800px) {
+  html {
+    font-size: 40%;
+  }
+}

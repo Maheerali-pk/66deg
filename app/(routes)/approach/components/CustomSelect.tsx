@@ -9,6 +9,7 @@ interface CustomSelectProps {
   options: string[];
   placeholder?: string;
   onSelect?: (value: string) => void;
+  variant?: "base" | "contactForm";
 }
 
 const CustomSelect = ({
@@ -16,6 +17,7 @@ const CustomSelect = ({
   options,
   placeholder = "Select Item",
   onSelect,
+  variant = "base",
 }: CustomSelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState<string | null>(null);
@@ -46,34 +48,52 @@ const CustomSelect = ({
     onSelect?.(value);
   };
 
+  const isContactForm = variant === "contactForm";
+
   return (
     <div className="relative w-full" ref={selectRef}>
-      <label className="block text-sm font-medium text-foreground mb-2">
+      <label
+        className={classNames("block mb-2", {
+          "text-sm font-medium text-foreground": !isContactForm,
+          "text-base text-text-primary/60": isContactForm,
+        })}
+      >
         {label}
       </label>
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         className={classNames(
-          "w-full flex items-center justify-between px-4 py-3 bg-white border border-divider-1 rounded-sm text-left transition-all duration-300",
+          "w-full flex items-center justify-between text-left transition-all duration-300",
           {
-            "border-primary": isOpen,
-            "hover:border-primary/50": !isOpen,
+            // Base variant styles
+            "px-4 py-3 bg-transparent border border-divider-1 rounded-sm":
+              !isContactForm,
+            "border-primary": !isContactForm && isOpen,
+            "hover:border-primary/50": !isContactForm && !isOpen,
+            // ContactForm variant styles (matching Input/Textarea)
+            "h-10 px-4 py-2 bg-transparent border border-[#ccc] rounded-micro text-text-primary/60 focus:outline-none":
+              isContactForm,
+            "focus:border-[#3898ec]": isContactForm && isOpen,
           }
         )}
       >
         <span
-          className={classNames("text-base", {
-            "text-foreground": selectedValue,
-            "text-muted-foreground": !selectedValue,
+          className={classNames({
+            "text-base": !isContactForm,
+            "text-text-primary/60 text-base md:text-sm": isContactForm,
+            "text-foreground": !isContactForm && selectedValue,
+            "text-muted-foreground": !isContactForm && !selectedValue,
           })}
         >
           {selectedValue || placeholder}
         </span>
         <ChevronDown
           className={classNames(
-            "w-5 h-5 text-muted-foreground transition-transform duration-300 flex-shrink-0",
+            "w-5 h-5 transition-transform duration-300 shrink-0",
             {
+              "text-muted-foreground": !isContactForm,
+              "text-text-primary/60": isContactForm,
               "rotate-180": isOpen,
             }
           )}
@@ -99,8 +119,10 @@ const CustomSelect = ({
               className={classNames(
                 "w-full px-4 py-3 text-left text-base transition-colors duration-200",
                 {
-                  "bg-primary/5 text-primary font-medium": selectedValue === option,
-                  "text-foreground hover:bg-background-secondary": selectedValue !== option,
+                  "bg-primary/5 text-primary font-medium":
+                    selectedValue === option,
+                  "text-foreground hover:bg-background-secondary":
+                    selectedValue !== option,
                 }
               )}
             >

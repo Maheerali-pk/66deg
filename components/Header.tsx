@@ -81,7 +81,7 @@ const Header = () => {
       >
         <nav
           className={classNames(
-            " mx-auto backdrop-blur-2xl shadow-sm rounded px-6 h-16 flex items-center justify-between transition-colors duration-300",
+            " mx-auto backdrop-blur-2xl shadow-sm rounded px-6 sm:px-1 h-16 flex items-center justify-between transition-colors duration-300",
             {
               "bg-white border-0":
                 isMobileMenuOpen ||
