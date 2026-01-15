@@ -44,7 +44,9 @@ const SuccessStories = () => {
                 />
               </div>
               <div className="p-6 bg-white/10 absolute bottom-4 mx-4 h-60 border-white/5 border flex justify-between flex-col">
-                <h3 className="text-white  text-4xl">{story.title}</h3>
+                <h3 className="text-white  text-4xl sm:text-2xl">
+                  {story.title}
+                </h3>
                 <Button variant="link" size="link">
                   Learn more
                   <ArrowRight className="w-4 h-4" />

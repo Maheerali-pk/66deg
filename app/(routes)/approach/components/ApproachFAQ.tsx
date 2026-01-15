@@ -1,13 +1,6 @@
-"use client";
-
-import { useState } from "react";
-import SectionHeadingWithSquare from "@/components/section-heading-with-square";
-import { Button } from "@/components/ui/button";
-import FAQItem from "./FAQItem";
+import FAQSectionBase from "@/components/FAQSectionBase";
 
 const ApproachFAQ = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
   const faqs = [
     {
       question: "What is the Agentic Enterprise, and why is it your focus?",
@@ -40,43 +33,17 @@ const ApproachFAQ = () => {
     },
   ];
 
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
   return (
-    <section className="py-24 sm:py-16 ">
-      <div className="container mx-auto   ">
-        <div className="border-t border-divider-1 pt-16 grid grid-cols-2 sm:grid-cols-1 sm:gap-4 ">
-          <div className=" flex flex-col gap-8 sm:gap-4 ">
-            <h2 className="text-6xl sm:text-3xl text-foreground ">
-              Frequently Asked <br /> Questions
-            </h2>
-            <p className="text-2xl sm:text-base text-text-primary">
-              Key insights into Building the Agentic Enterprise.
-            </p>
-            <Button
-              variant="secondary"
-              className="rounded-none uppercase font-family-secondary w-fit"
-            >
-              get in touch
-            </Button>
-          </div>
-
-          <div className="max-w-4xl ">
-            {faqs.map((faq, index) => (
-              <FAQItem
-                key={index}
-                question={faq.question}
-                answer={faq.answer}
-                isOpen={openIndex === index}
-                onToggle={() => toggleFAQ(index)}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
+    <FAQSectionBase
+      faqs={faqs}
+      title={
+        <>
+          Frequently Asked <br /> Questions
+        </>
+      }
+      description="Key insights into Building the Agentic Enterprise."
+      buttonText="get in touch"
+    />
   );
 };
 
