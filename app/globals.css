@@ -100,6 +100,7 @@
   --color-gray-light: var(--gray-light);
   --color-gray-500: var(--gray-500);
   --color-brown-light: #f0ede7;
+  --color-pillar-card-title: var(--pillar-card-title);
 
   --color-divider-2: var(--divider-2);
 
@@ -197,6 +198,7 @@
   --divider-2: #eeeeee;
   --dark-background: #030a1c;
   --primary-dull-1: #8e9fc3;
+  --pillar-card-title: #667883;
 }
 
 html {

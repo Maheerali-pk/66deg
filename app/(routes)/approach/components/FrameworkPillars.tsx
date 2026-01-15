@@ -1,12 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import SectionHeadingWithSquare from "@/components/section-heading-with-square";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import PillarCard from "./PillarCard";
 
 const FrameworkPillars = () => {
-  const [activePillar, setActivePillar] = useState(0);
 
   const pillars = [
     {
@@ -56,31 +53,15 @@ const FrameworkPillars = () => {
           </p>
         </div>
 
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-4">
           {pillars.map((pillar, index) => (
-            <div
+            <PillarCard
               key={index}
-              className="border-b border-divider-1 pb-8 last:border-b-0"
-            >
-              <div className="flex flex-col sm:flex-row sm:items-start gap-6">
-                <div className="flex items-center gap-4 sm:w-32">
-                  <span className="text-4xl sm:text-3xl font-light text-muted-foreground">
-                    {pillar.number}
-                  </span>
-                  <span className="text-sm uppercase text-muted-foreground font-family-secondary">
-                    Pillar {index + 1}
-                  </span>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl sm:text-xl text-foreground mb-4">
-                    {pillar.title}
-                  </h3>
-                  <p className="text-base sm:text-sm text-muted-foreground leading-relaxed">
-                    {pillar.description}
-                  </p>
-                </div>
-              </div>
-            </div>
+              number={pillar.number}
+              pillarIndex={index}
+              title={pillar.title}
+              description={pillar.description}
+            />
           ))}
         </div>
       </div>
