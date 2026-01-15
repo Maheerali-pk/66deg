@@ -187,10 +187,12 @@ const NavDropdown = ({
     return (
       <div
         className={classNames(
-          "absolute top-full left-0 bg-white border-t border-navbar-border shadow-lg z-[100] overflow-hidden transition-[max-height] duration-500 ease-out",
+          "absolute top-full left-0 bg-white shadow-lg z-[100] overflow-hidden transition-all duration-500 ease-out",
           {
             "w-[900px]": isMultiColumn,
             "w-full": !isMultiColumn,
+            "opacity-100 border-t border-navbar-border": isOpen,
+            "opacity-0": !isOpen,
           }
         )}
         style={{

@@ -1,11 +1,13 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight } from "lucide-react";
 import { useState } from "react";
 
 const CTA = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
@@ -45,6 +47,7 @@ const CTA = () => {
           <Button
             variant="secondary"
             className="bg-primary text-white font-family-secondary hover:bg-primary/90 w-fit uppercase"
+            onClick={() => router.push("/contact-us")}
           >
             Get in touch
           </Button>

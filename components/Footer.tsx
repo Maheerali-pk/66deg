@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowRight } from "lucide-react";
 import { useState } from "react";
 
 const Footer = () => {
+  const router = useRouter();
   const [email, setEmail] = useState("");
 
   const footerLinks: {
@@ -140,12 +142,21 @@ const Footer = () => {
                 <ul className="flex flex-col gap-6">
                   {section.items.map((item, itemIndex) => (
                     <div key={itemIndex}>
-                      <Link
-                        href={item.link}
-                        className="text-gray-light whitespace-wrap"
-                      >
-                        {item.text}
-                      </Link>
+                      {item.text === "Contact Us" ? (
+                        <button
+                          onClick={() => router.push("/contact-us")}
+                          className="text-gray-light whitespace-wrap text-left hover:text-white transition-colors"
+                        >
+                          {item.text}
+                        </button>
+                      ) : (
+                        <Link
+                          href={item.link}
+                          className="text-gray-light whitespace-wrap"
+                        >
+                          {item.text}
+                        </Link>
+                      )}
                     </div>
                   ))}
                 </ul>

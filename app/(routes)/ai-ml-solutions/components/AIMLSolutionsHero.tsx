@@ -1,6 +1,10 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
 const AIMLSolutionsHero = () => {
+  const router = useRouter();
   return (
     <section className="relative py-24 sm:py-16 overflow-hidden bg-dark-background h-screen">
       <div className="container mx-auto h-full">
@@ -17,6 +21,7 @@ const AIMLSolutionsHero = () => {
             <Button
               variant="secondary"
               className="rounded-none uppercase font-family-secondary"
+              onClick={() => router.push("/contact-us")}
             >
               Get in touch
             </Button>

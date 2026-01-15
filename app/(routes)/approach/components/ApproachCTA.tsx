@@ -1,6 +1,10 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
 const ApproachCTA = () => {
+  const router = useRouter();
   return (
     <section className="py-24 sm:py-16">
       <div className="container mx-auto">
@@ -16,6 +20,7 @@ const ApproachCTA = () => {
             <Button
               variant="secondary"
               className="rounded-none uppercase font-family-secondary"
+              onClick={() => router.push("/contact-us")}
             >
               Get in touch
             </Button>

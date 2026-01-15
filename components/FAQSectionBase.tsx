@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState, ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import FAQItem from "@/app/(routes)/approach/components/FAQItem";
@@ -22,6 +23,7 @@ const FAQSectionBase = ({
   description,
   buttonText = "get in touch",
 }: FAQSectionBaseProps) => {
+  const router = useRouter();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleFAQ = (index: number) => {
@@ -40,6 +42,7 @@ const FAQSectionBase = ({
             <Button
               variant="secondary"
               className="rounded-none uppercase font-family-secondary w-fit"
+              onClick={() => router.push("/contact-us")}
             >
               {buttonText}
             </Button>

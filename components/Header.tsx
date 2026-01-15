@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import NavbarButton from "@/components/NavbarButton";
 import NavDropdown from "@/components/NavDropdown";
 import { useState, useEffect } from "react";
@@ -26,6 +27,7 @@ const ThinCloseIcon = ({ className }: { className?: string }) => (
 );
 
 const Header = () => {
+  const router = useRouter();
   const [isAnyDropdownOpen, setIsAnyDropdownOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(true);
@@ -196,6 +198,7 @@ const Header = () => {
           <Button
             variant="secondary"
             className="sm:hidden lg:flex bg-primary text-white font-family-secondary hover:bg-primary/90"
+            onClick={() => router.push("/contact-us")}
           >
             CONTACT US
           </Button>

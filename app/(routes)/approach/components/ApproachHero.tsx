@@ -1,6 +1,10 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 
 const ApproachHero = () => {
+  const router = useRouter();
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Image */}
@@ -26,6 +30,7 @@ const ApproachHero = () => {
           <Button
             variant="secondary"
             className="rounded-none uppercase font-family-secondary"
+            onClick={() => router.push("/contact-us")}
           >
             Get in touch
           </Button>

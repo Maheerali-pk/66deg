@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import classNames from "classnames";
 import { Button } from "./ui/button";
@@ -13,6 +14,7 @@ interface MobileMenuProps {
 }
 
 const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
+  const router = useRouter();
   const [openAccordions, setOpenAccordions] = useState<Set<string>>(new Set());
 
   // Prevent body scroll when menu is open
@@ -115,7 +117,10 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
             <Button
               variant="secondary"
               className="w-full bg-primary text-white font-family-secondary hover:bg-primary/90 py-3"
-              onClick={onClose}
+              onClick={() => {
+                onClose();
+                router.push("/contact-us");
+              }}
             >
               CONTACT US
             </Button>
