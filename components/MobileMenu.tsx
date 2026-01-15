@@ -136,11 +136,11 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                             {group.items.map((subItem, itemIndex) => (
                               <li key={itemIndex}>
                                 <Link
-                                  href="#"
+                                  href={subItem.href || "#"}
                                   onClick={onClose}
                                   className="block py-2  text-xs text-text-primary/80 hover:text-primary transition-colors"
                                 >
-                                  {subItem}
+                                  {subItem.label}
                                 </Link>
                               </li>
                             ))}

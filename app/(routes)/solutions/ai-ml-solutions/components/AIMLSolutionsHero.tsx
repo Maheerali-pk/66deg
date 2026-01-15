@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 const AIMLSolutionsHero = () => {
   const router = useRouter();
   return (
-    <section className="relative py-24 sm:py-16 overflow-hidden bg-dark-background h-screen">
+    <section className="relative py-24 sm:py-28 overflow-hidden bg-dark-background h-screen">
       <div className="container mx-auto h-full">
         <div className="grid lg:grid-cols-2 gap-12 sm:gap-8 items-center h-full">
           {/* Left Content */}

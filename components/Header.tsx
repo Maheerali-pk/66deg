@@ -83,7 +83,7 @@ const Header = () => {
       >
         <nav
           className={classNames(
-            " mx-auto backdrop-blur-2xl shadow-sm rounded px-6 sm:px-1 h-16 flex items-center justify-between transition-colors duration-300",
+            " mx-auto backdrop-blur-2xl shadow-sm rounded px-6 sm:px-1  sm:h-14 h-16 flex items-center justify-between transition-colors duration-300",
             {
               "bg-white border-navbar-border/50 border":
                 isMobileMenuOpen ||
@@ -117,7 +117,7 @@ const Header = () => {
                 }
               )}
             >
-              <img src="images/logo.png" className="h-8"></img>
+              <img src="/images/logo.png" className="h-8"></img>
             </Link>
           </div>
 
@@ -162,7 +162,7 @@ const Header = () => {
           <Button
             variant="secondary"
             className={classNames(
-              "sm:flex hidden font-family-secondary p-0 h-13 w-13 items-center justify-center relative [&_svg]:size-14! transition-all duration-300",
+              "sm:flex hidden font-family-secondary p-0 h-10 w-10 items-center justify-center relative [&_svg]:size-14! transition-all duration-300",
               {
                 "bg-white text-text-primary hover:bg-gray-100":
                   isMobileMenuOpen,
