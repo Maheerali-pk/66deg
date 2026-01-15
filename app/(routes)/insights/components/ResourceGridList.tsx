@@ -196,7 +196,8 @@ const ResourceGridList = () => {
 
   return (
     <section className="py-24 ">
-      <div className="container mx-auto border-t border-divider-1 pt-16">
+      <div className="container mx-auto  ">
+        <div className="h-px w-full bg-divider-1 mb-16"></div>
         <div className="grid md:grid-cols-3 gap-8 sm:gap-6 sm:grid-cols-1">
           {visibleResources.map((resource, index) => (
             <ResourceCard key={index} {...resource} />
